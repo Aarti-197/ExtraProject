@@ -23,19 +23,28 @@ function preload() {
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
 
-  Steve = createSprite(200,200);
+  Steve = createSprite(800,600);
   Steve.addImage("demo",car1_img);
   Steve.scale = 0.1;
-  var x = Steve.x;
-  console.log(x)
 }
 
 function draw() {
   background(backgroundImage);
 
   if(keyDown(UP_ARROW)){
-    Steve.x += 5;
+    Steve.position.x += 5;
   }
+  spawnClouds()
 
   drawSprites();
+}
+
+function spawnClouds() {
+  //write code here to spawn the clouds
+  if (frameCount % 60 === 0) {
+    cloud = createSprite(600,100,40,10);
+    cloud.y = Math.round(random(10,60));
+    cloud.addImage(car2_img);
+    cloud.scale = 0.1;
+  }
 }
